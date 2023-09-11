@@ -3,7 +3,7 @@ const Map<String, String> viVN = {
   'login': "Đăng nhập",
   'slogan': "Bền vững vượt thời gian",
   'password': "Mật Khẩu",
-  "phone": "Số điện thoại",
+  // "phone": "Số điện thoại",
   "username": "Tên đăng nhập",
   "email": "Email",
   "changePassWord": "Đổi mật khẩu",
@@ -17,7 +17,7 @@ const Map<String, String> viVN = {
   "EnterPhone": "Nhập số điện thoại",
   "PleaseEnterLoginCodeToReceiveTheVerificationCode":
       "Vui lòng nhập mã đăng nhập của bạn để nhận mã code xác thực",
-  'valid_emty': 'Vui lòng nhập thông tin này',
+  // 'valid_emty': 'Vui lòng nhập thông tin này',
 
 //account
   "fullName": "Họ và tên",

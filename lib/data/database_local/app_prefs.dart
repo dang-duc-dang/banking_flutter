@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:food_flutter/data/models/user/user_model.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-
-import '../models/user/user.dart';
 
 class AppPrefs {
   AppPrefs._();
@@ -28,8 +27,7 @@ class AppPrefs {
       Hive.init(appDocDirectory.path);
     }
     Hive.registerAdapter(UserModelAdapter());
-    Hive.registerAdapter(LevelMemberAdapter());
-    Hive.registerAdapter(CommissionReservePercentStockAdapter());
+
     box = await Hive.openBox(
       'AppPref',
       encryptionCipher: HiveAesCipher(_encryptionKey),
@@ -46,4 +44,8 @@ class AppPrefs {
   static set accessToken(String? value) => box.put('accessToken', value);
 
   static String? get accessToken => box.get('accessToken');
+
+  static set userData(UserModel? value) => box.put('userData', value);
+
+  static UserModel get userData => box.get('userData') ?? UserModel();
 }
