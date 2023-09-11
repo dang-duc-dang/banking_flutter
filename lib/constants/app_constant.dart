@@ -51,6 +51,8 @@ const String BORDER_RIGHT = 'right';
 const String PERMISSION_GRANTED = 'granted';
 const String PERMISSION_DENIED = 'denied';
 const String PERMISSION_UNKNOWN = 'unknown';
+const String REGISTER = 'REGISTER';
+const String LOGIN = 'LOGIN';
 
 const String TRUE = 'true';
 const String FALSE = 'false';

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:food_flutter/constants/enum_file.dart';
 import 'package:food_flutter/constants/image_constant.dart';
+import 'package:food_flutter/data/database_local/app_prefs.dart';
+import 'package:food_flutter/data/models/user/user_model.dart';
 import 'package:food_flutter/helpers/extension/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:food_flutter/page/home/home_controller.dart';
@@ -52,49 +54,56 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildHeader() {
-    return Padding(
-      padding:
-          EdgeInsets.only(top: 20.w, right: 30.w, left: 30.w, bottom: 15.w),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Hello Jega",
-                    style: Style().largeTextBold,
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Text("What are you cooking today?",
-                      style: Style().smallTextRegular.copyWith(
-                            color: Style.gray3,
-                          )),
-                ],
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.sp),
-                child: Image.asset(
-                  ImageConstant.logoSplash,
-                  fit: BoxFit.cover,
-                  width: 40,
-                  height: 40,
+    return StreamBuilder(
+        stream: AppPrefs().watch('userData'),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          UserModel user = AppPrefs.box.get('userData');
+          return Padding(
+            padding: EdgeInsets.only(
+                top: 20.w, right: 30.w, left: 30.w, bottom: 15.w),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Hello ${user.email}",
+                            style: Style().largeTextBold,
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Text("What are you cooking today?",
+                              style: Style().smallTextRegular.copyWith(
+                                    color: Style.gray3,
+                                  )),
+                        ],
+                      ),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.sp),
+                      child: Image.asset(
+                        ImageConstant.logoSplash,
+                        fit: BoxFit.cover,
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          _buildSearch()
-        ],
-      ),
-    );
+                SizedBox(
+                  height: 30.h,
+                ),
+                _buildSearch()
+              ],
+            ),
+          );
+        });
   }
 
   Widget _buildSearch() {

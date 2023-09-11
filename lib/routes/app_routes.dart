@@ -12,4 +12,6 @@ abstract class AppRoutes {
   static const dashboard = '/dashboard';
   static const recipeDetail = '/recipeDetail';
   static const review = '/review';
+  static const otp = '/otp';
+  static const sendOtp = '/sendOtp';
 }

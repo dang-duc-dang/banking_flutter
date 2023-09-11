@@ -29,4 +29,9 @@ class ImageConstant {
   static String unLike = 'assets/3.0x/unlike.png';
   static String like = 'assets/3.0x/like.png';
   static String noti = 'assets/3.0x/noti.png';
+  static String email = 'assets/3.0x/email.png';
+
+  //animation
+  static String loadingAnimation = 'assets/animations/loading_animation.json';
+  static String success = 'assets/animations/success-confetti.json';
 }

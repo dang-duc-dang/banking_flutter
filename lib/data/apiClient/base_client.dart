@@ -1,31 +1,37 @@
 import 'dart:developer';
-import 'package:food_flutter/data/database_local/app_prefs.dart';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:food_flutter/data/database_local/app_prefs.dart';
 
 class BaseClient {
+  static const _apiHostReal = 'https://staging.hoan-dragon.com/main-service';
+
   static BaseClient? _instance;
   Dio? _dio;
 
-  factory BaseClient({bool needToken = true}) {
-    _instance = BaseClient._(needToken: needToken);
-    return _instance!;
+  BaseClient();
+
+  static get instance {
+    _instance ??= BaseClient._internal();
+    return _instance;
   }
+
+  get apiHostReal => _apiHostReal;
 
   get dio => _dio;
 
-  BaseClient._({required bool needToken}) {
+  BaseClient._internal() {
     _dio = Dio();
     _dio!.interceptors
         .add(InterceptorsWrapper(onRequest: (options, handler) async {
       String? token = AppPrefs.accessToken;
-      print("TOKENNNNN $token");
       if (kDebugMode) {
         log('API URL: ${options.method} ${options.path} ${options.data}');
       }
       options.headers['content-type'] = 'application/json';
       options.headers['accept'] = 'application/json';
-      if (token != '' && needToken == true) {
+      if (token != '') {
         if (kDebugMode) {
           print('Request token: ${token.toString()}');
         }

@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:food_flutter/constants/image_constant.dart';
 import 'package:food_flutter/helpers/extension/responsive.dart';
-import 'package:food_flutter/page/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:food_flutter/page/register/build_form.dart';
 import 'package:food_flutter/page/register/register_controller.dart';
@@ -30,15 +28,15 @@ class RegisterPage extends GetView<RegisterController> {
                       height: 10.h,
                     ),
                     Text(
-                      "Create an account",
+                      "create_an_account".tr,
                       style: Style().largeTextBold,
                     ),
                     Text(
-                      "Let’s help you set up your account,",
+                      "let’s_help_you_set_up_your_account".tr,
                       style: Style().smallerTextRegular,
                     ),
                     Text(
-                      "won’t take long.",
+                      "won’t_take_long".tr,
                       style: Style().smallerTextRegular,
                     ),
                     SizedBox(
@@ -59,14 +57,14 @@ class RegisterPage extends GetView<RegisterController> {
                             controller.checkBox.value == false
                                 ? Icons.check_box_outline_blank
                                 : Icons.check_box,
-                            size: 14,
+                            size: 16,
                             color: Style.secondary100,
                           ),
                         ),
                         SizedBox(
                           width: 6.w,
                         ),
-                        Text("Accept terms & Condition",
+                        Text("Accept_terms_condition".tr,
                             style: Style().smallerTextRegular.copyWith(
                                   color: Style.secondary100,
                                 )),
@@ -77,11 +75,12 @@ class RegisterPage extends GetView<RegisterController> {
                     ),
                     RadiusButton(
                       onTap: () {
-                        // Get.toNamed(AppRoutes.login);
+                        controller.onRegister();
                       },
                       isFullWidth: true,
                       maxWidth: Get.width,
-                      text: "Sign Up",
+                      isDisable: controller.checkBox.value == false,
+                      text: "sign_up".tr,
                       textColor: Colors.white,
                       fontSize: 16.w,
                       innerPadding: EdgeInsets.symmetric(vertical: 18.w),
@@ -98,7 +97,7 @@ class RegisterPage extends GetView<RegisterController> {
                     Row(
                       children: [
                         const Expanded(child: Divider()),
-                        Text("Or Sign in With",
+                        Text("or_sign_in_With".tr,
                             style: Style().smallerTextSemiBold.copyWith(
                                   color: Style.gray4,
                                 )),
@@ -165,14 +164,14 @@ class RegisterPage extends GetView<RegisterController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Already a member? ",
+                          '${"already_a_member".tr} ',
                           style: Style().smallerTextSemiBold,
                         ),
                         GestureDetector(
                           onTap: () {
                             Get.toNamed(AppRoutes.login);
                           },
-                          child: Text("Sign in",
+                          child: Text("sign_in".tr,
                               style: Style().smallerTextSemiBold.copyWith(
                                     color: Style.secondary100,
                                   )),

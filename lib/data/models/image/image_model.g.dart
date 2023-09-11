@@ -45,7 +45,7 @@ class ImageModelAdapter extends TypeAdapter<ImageModel> {
 // **************************************************************************
 
 ImageModel _$ImageModelFromJson(Map<String, dynamic> json) => ImageModel(
-      file: json['file'] == null || json['file'] is String
+      file: json['file'] == null
           ? null
           : FileModel.fromJson(json['file'] as Map<String, dynamic>),
     );
