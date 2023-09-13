@@ -8,6 +8,7 @@ import 'package:food_flutter/routes/app_pages.dart';
 import 'package:food_flutter/style/app_style.dart';
 import 'package:food_flutter/widget/_custom_header.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class RecipeDetailPage extends GetView<RecipeDetailController> {
   const RecipeDetailPage({super.key});
@@ -38,21 +39,39 @@ class RecipeDetailPage extends GetView<RecipeDetailController> {
           ),
           backgroundColor: Colors.white,
           resizeToAvoidBottomInset: true,
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
-            child: Column(
-              children: [
-                _buildHeader(),
-                SizedBox(
-                  height: 8.h,
+          body: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.w),
+                child: Column(
+                  children: [
+                    _buildHeader(),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    _buildTab(),
+                    SizedBox(
+                      height: 22.h,
+                    ),
+                    _buildBody(),
+                  ],
                 ),
-                _buildTab(),
-                SizedBox(
-                  height: 22.h,
-                ),
-                _buildBody()
-              ],
-            ),
+              ),
+              GetBuilder(
+                id: 'builder_6',
+                builder: (RecipeDetailController controller) {
+                  if (controller.bannerAd != null) {
+                    return SizedBox(
+                      width: controller.bannerAd!.size.width.toDouble(),
+                      height: controller.bannerAd!.size.height.toDouble(),
+                      child: AdWidget(ad: controller.bannerAd!),
+                    );
+                  }
+                  return Container();
+                },
+              ),
+            ],
           )),
     );
   }

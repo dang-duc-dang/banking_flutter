@@ -66,6 +66,7 @@ class SplashPage extends GetView<SplashController> {
                 RadiusButton(
                   onTap: () {
                     Get.toNamed(AppRoutes.login);
+                    // Get.offAndToNamed(AppRoutes.dashboard);
                   },
                   isFullWidth: true,
                   text: "Start Cooking",
