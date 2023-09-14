@@ -14,6 +14,7 @@ class LoginController extends GetxController {
   final TextEditingController passWordController = TextEditingController();
   final FocusNode passWordFocus = FocusNode();
   final showOld = false.obs;
+
   toggleShowPassword(RxBool show) {
     show.value = !show.value;
   }
@@ -26,7 +27,6 @@ class LoginController extends GetxController {
 
   login() async {
     resetFocus();
-
     final data = {
       "email": emailController.text,
       "password": passWordController.text

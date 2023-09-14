@@ -7,8 +7,12 @@ import 'package:food_flutter/style/app_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../helpers/admod/AppOpenAdManager.dart';
+import '../../helpers/admod/app_lifecycle_reactor.dart';
+
 class DashboardController extends GetxController {
   var currentTab = 0.obs;
+  late AppLifecycleReactor _appLifecycleReactor;
   final iconList = [
     Icons.home_rounded,
     Icons.bookmark,
@@ -24,6 +28,15 @@ class DashboardController extends GetxController {
 
   void switchTab(index) {
     currentTab.value = index;
+  }
+
+  @override
+  void onInit() {
+    AppOpenAdManager appOpenAdManager = AppOpenAdManager()..loadAd();
+    _appLifecycleReactor =
+        AppLifecycleReactor(appOpenAdManager: appOpenAdManager);
+    _appLifecycleReactor.listenToAppStateChanges();
+    super.onInit();
   }
 
   Widget get currentPage => children[currentTab.value];

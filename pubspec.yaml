@@ -55,6 +55,7 @@ dependencies:
   tuple: ^2.0.2
   animations: ^2.0.7
   animated_bottom_navigation_bar: any
+  google_mobile_ads: ^3.0.0
 
 dev_dependencies:
   flutter_test:

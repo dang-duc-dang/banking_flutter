@@ -70,6 +70,8 @@ class SplashPage extends GetView<SplashController> {
                     } else {
                       Get.offNamed(AppRoutes.login);
                     }
+                    Get.toNamed(AppRoutes.login);
+                    // Get.offAndToNamed(AppRoutes.dashboard);
                   },
                   isFullWidth: true,
                   text: "start_cooking".tr,
