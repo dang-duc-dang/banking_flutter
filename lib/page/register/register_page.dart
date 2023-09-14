@@ -20,7 +20,7 @@ class RegisterPage extends GetView<RegisterController> {
         body: SingleChildScrollView(
           child: Obx(
             () => Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.w),
+              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

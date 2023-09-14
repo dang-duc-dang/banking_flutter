@@ -37,7 +37,7 @@ class AppPrefs {
 
   Stream watch(key) => box.watch(key: key);
 
-  void clear() async {
+  clear() async {
     box.deleteAll(['accessToken', 'userData']);
   }
 

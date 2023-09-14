@@ -252,6 +252,7 @@ const String WEEK_SCORE = 'weekScore';
 const String MONTH_SCORE = 'monthScore';
 const String QUARTER_SCORE = 'quarterScore';
 const String COLLECTION_DEFAULT = 'default';
+const String FORGOTPASS = 'FORGOTPASS';
 
 const List<String> SHORT_NFT = [
   ALL,

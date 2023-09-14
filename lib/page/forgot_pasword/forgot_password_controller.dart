@@ -1,21 +1,30 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:food_flutter/constants/app_constant.dart';
 import 'package:food_flutter/constants/utils/error_util.dart';
 import 'package:food_flutter/data/apiClient/api_client.dart';
 import 'package:food_flutter/routes/app_pages.dart';
 import 'package:get/get.dart';
 
-class LoginController extends GetxController {
+class ForgotPasswordController extends GetxController {
   final ApiClient client;
-  LoginController({required this.client});
-  final TextEditingController emailController = TextEditingController();
-  final FocusNode emailFocus = FocusNode();
+  ForgotPasswordController({required this.client});
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final FocusNode confirmPasswordFocus = FocusNode();
   final TextEditingController passWordController = TextEditingController();
   final FocusNode passWordFocus = FocusNode();
   final showOld = false.obs;
+  final email = ''.obs;
   toggleShowPassword(RxBool show) {
     show.value = !show.value;
+  }
+
+  @override
+  onInit() {
+    super.onInit();
+    if (Get.arguments != null) {
+      email.value = Get.arguments['email'] as String;
+    }
   }
 
   final GlobalKey<FormState> keyValidate = GlobalKey();
@@ -24,18 +33,17 @@ class LoginController extends GetxController {
     FocusScope.of(Get.context!).requestFocus(FocusNode());
   }
 
-  login() async {
+  forgotPass() async {
     resetFocus();
 
     final data = {
-      "email": emailController.text,
-      "password": passWordController.text
+      "email": email.value,
+      "newPassword": confirmPasswordController.text
     };
     if (keyValidate.currentState!.validate()) {
       EasyLoading.show(status: 'loading'.tr);
-      await client.login(data).then((response) async {
-        Get.toNamed(AppRoutes.otp,
-            arguments: {"email": emailController.text, "type": LOGIN});
+      await client.resetPass(data).then((response) async {
+        Get.offNamed(AppRoutes.login);
         EasyLoading.dismiss();
       }).catchError((error, trace) {
         EasyLoading.dismiss();

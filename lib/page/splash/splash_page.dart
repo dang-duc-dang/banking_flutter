@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_flutter/constants/app_constant.dart';
 import 'package:food_flutter/constants/image_constant.dart';
 import 'package:food_flutter/helpers/extension/responsive.dart';
 import 'package:food_flutter/page/splash/splash_controller.dart';
@@ -48,7 +47,7 @@ class SplashPage extends GetView<SplashController> {
                   height: 222.h,
                 ),
                 Text(
-                  "Get Cooking",
+                  "get_cooking".tr,
                   textAlign: TextAlign.center,
                   style: Style().headerTitle.copyWith(color: Colors.white),
                 ),
@@ -56,7 +55,7 @@ class SplashPage extends GetView<SplashController> {
                   height: 20.h,
                 ),
                 Text(
-                  "Simple way to find Tasty Recipe",
+                  "simple_way_to_find_tasty_recipe".tr,
                   style:
                       Style().normalTextRegular.copyWith(color: Colors.white),
                 ),
@@ -65,10 +64,15 @@ class SplashPage extends GetView<SplashController> {
                 ),
                 RadiusButton(
                   onTap: () {
-                    Get.toNamed(AppRoutes.login);
+                    if (controller.token.value != "" &&
+                        controller.token.value.isNotEmpty) {
+                      Get.offNamed(AppRoutes.dashboard);
+                    } else {
+                      Get.offNamed(AppRoutes.login);
+                    }
                   },
                   isFullWidth: true,
-                  text: "Start Cooking",
+                  text: "start_cooking".tr,
                   textColor: Colors.white,
                   fontSize: 16.w,
                   fontFamily: Style.fontBold,

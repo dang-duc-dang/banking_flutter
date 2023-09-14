@@ -27,8 +27,8 @@ const Map<String, String> enUS = {
   "my_post": "My Post",
   "group": "Group",
   "verification": "Verification",
-  "please_wait_within_28_detik_to_Resend":
-      "Please wait within 28 detik to Resend",
+  "please_wait_within": "Please wait within",
+  "detik_to_Resend": "detik to resend",
   "channel": "Channel",
   "otp": "Otp",
   "hello": "Hello,",
@@ -60,5 +60,11 @@ const Map<String, String> enUS = {
   "invalid_password": "Invalid password",
   "re_enter_incorrect_password": "Re-enter incorrect password",
   "Password_must_have_at_least_6_characters":
-      "Password must have at least 6 characters"
+      "Password must have at least 6 characters",
+  "forgot_password": "Forgot password",
+  "new_password": "New password",
+  "start_cooking": "Start Cooking",
+  "get_cooking": "Get Cooking",
+  "simple_way_to_find_tasty_recipe": "Simple way to find Tasty Recipe",
+  "please_enter_a_new_password": "Please enter a new password"
 };
