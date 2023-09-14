@@ -33,22 +33,6 @@ class BuildForm extends GetView<RegisterController> {
                 height: 20.h,
               ),
               TitleDefaultTextField(
-                validator: AppValid.validateEmail(),
-                width: double.infinity,
-                radius: 12.w,
-                controller: controller.emailController,
-                focusNode: controller.emailFocus,
-                title: 'email'.tr,
-                textStyle: Style().smallTextRegular,
-                hintText: 'enter_email'.tr,
-                innerPadding:
-                    EdgeInsets.symmetric(horizontal: 20.w, vertical: 19.w),
-                onChanged: (text) {},
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              TitleDefaultTextField(
                 validator: AppValid.validatePhoneNumber(),
                 width: double.infinity,
                 radius: 12.w,

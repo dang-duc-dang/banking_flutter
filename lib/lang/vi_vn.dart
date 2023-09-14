@@ -2,7 +2,6 @@ const Map<String, String> viVN = {
   'home': "Trang chủ",
   'login': "Đăng nhập",
   'slogan': "Bền vững vượt thời gian",
-  'password': "Mật Khẩu",
   // "phone": "Số điện thoại",
   "username": "Tên đăng nhập",
   "email": "Email",

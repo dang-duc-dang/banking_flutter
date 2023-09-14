@@ -14,4 +14,5 @@ abstract class AppRoutes {
   static const review = '/review';
   static const otp = '/otp';
   static const sendOtp = '/sendOtp';
+  static const forgotPass = '/forgotPass';
 }

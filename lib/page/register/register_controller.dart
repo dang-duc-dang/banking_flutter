@@ -11,8 +11,6 @@ import 'package:get/get.dart';
 class RegisterController extends GetxController {
   final ApiClient client;
   RegisterController({required this.client});
-  final TextEditingController emailController = TextEditingController();
-  final FocusNode emailFocus = FocusNode();
   final TextEditingController phoneController = TextEditingController();
   final FocusNode phoneFocus = FocusNode();
   final TextEditingController passwordConfirmController =
@@ -25,15 +23,24 @@ class RegisterController extends GetxController {
   GlobalKey<FormState> keyValidate = GlobalKey();
   final showOld = false.obs;
   final checkBox = false.obs;
+  final email = "".obs;
   final showConfirm = false.obs;
   toggleShowPassword(RxBool show) {
     show.value = !show.value;
   }
 
+  @override
+  onInit() {
+    super.onInit();
+    if (Get.arguments != null) {
+      email.value = Get.arguments['email'] as String;
+    }
+  }
+
   onRegister() async {
     if (keyValidate.currentState!.validate()) {
       final data = {
-        "email": emailController.text,
+        "email": email.value,
         "phone": phoneController.text,
         "fullName": nameController.text,
         "password": passwordConfirmController.text

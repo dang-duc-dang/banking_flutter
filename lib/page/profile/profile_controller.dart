@@ -26,8 +26,9 @@ class ProfileController extends GetxController
     // }).catchError((error, trace) {
     //   ErrorUtil.catchError(error, trace);
     // });
-    await Get.offAllNamed(AppRoutes.splash);
-    AppPrefs().clear();
+
+    await Get.offAndToNamed(AppRoutes.splash);
+    await AppPrefs().clear();
   }
 
   List<List<Map<String, String>>> listNoti = [

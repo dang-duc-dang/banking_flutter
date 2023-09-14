@@ -28,8 +28,23 @@ class ApiClient {
         data: AppUtil.filterRequestData(data));
   }
 
+  Future<Response> otpForgot(Map<String, dynamic> data) async {
+    return client.post('$apiHostReal/auth/verify-otp-forget',
+        data: AppUtil.filterRequestData(data));
+  }
+
   Future<Response> sendOtp(Map<String, dynamic> data) async {
     return client.post('$apiHostReal/auth/pre-register',
+        data: AppUtil.filterRequestData(data));
+  }
+
+  Future<Response> fogetPass(Map<String, dynamic> data) async {
+    return client.post('$apiHostReal/auth/pre-forgot-pass',
+        data: AppUtil.filterRequestData(data));
+  }
+
+  Future<Response> resetPass(Map<String, dynamic> data) async {
+    return client.post('$apiHostReal/auth/reset-password',
         data: AppUtil.filterRequestData(data));
   }
 }

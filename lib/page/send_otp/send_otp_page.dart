@@ -70,13 +70,13 @@ class SendOtpPage extends GetView<SendOtpController> {
                 ),
                 RadiusButton(
                   onTap: () {
-                    controller.sendOtp();
+                    controller.onSubmit();
                   },
                   isFullWidth: true,
                   outsidePadding: EdgeInsets.all(30.w),
                   isDisable: !controller.isValid(),
                   maxWidth: Get.width,
-                  text: "Next",
+                  text: "next".tr,
                   textColor: Colors.white,
                   fontSize: 16.w,
                   innerPadding: EdgeInsets.symmetric(vertical: 18.w),

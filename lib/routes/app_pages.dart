@@ -1,5 +1,7 @@
 import 'package:food_flutter/page/dashboard/dashboard_binding.dart';
 import 'package:food_flutter/page/dashboard/dashboard_page.dart';
+import 'package:food_flutter/page/forgot_pasword/forgot_password.dart';
+import 'package:food_flutter/page/forgot_pasword/forgot_password_page.dart';
 import 'package:food_flutter/page/home/home_binding.dart';
 import 'package:food_flutter/page/home/home_page.dart';
 import 'package:food_flutter/page/login/login.dart';
@@ -65,6 +67,11 @@ class AppPages {
       name: AppRoutes.sendOtp,
       page: () => const SendOtpPage(),
       binding: SendOtpBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.forgotPass,
+      page: () => const ForgotPasswordPage(),
+      binding: ForgotPasswordBinding(),
     ),
   ];
 }

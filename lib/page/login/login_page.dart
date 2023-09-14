@@ -1,3 +1,4 @@
+import 'package:food_flutter/constants/app_constant.dart';
 import 'package:food_flutter/constants/image_constant.dart';
 import 'package:food_flutter/constants/utils/app_valid.dart';
 import 'package:food_flutter/helpers/extension/responsive.dart';
@@ -82,10 +83,16 @@ class LoginPage extends GetView<LoginController> {
                     SizedBox(
                       height: 20.h,
                     ),
-                    Text("Forgot Password?",
-                        style: Style().smallerTextRegular.copyWith(
-                              color: Style.secondary100,
-                            )),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.sendOtp,
+                            arguments: {'type': FORGOTPASS});
+                      },
+                      child: Text("Forgot Password?",
+                          style: Style().smallerTextRegular.copyWith(
+                                color: Style.secondary100,
+                              )),
+                    ),
                     SizedBox(
                       height: 25.h,
                     ),
@@ -184,7 +191,8 @@ class LoginPage extends GetView<LoginController> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRoutes.sendOtp);
+                            Get.toNamed(AppRoutes.sendOtp,
+                                arguments: {'type': REGISTER});
                           },
                           child: Text("Sign up",
                               style: Style().smallerTextSemiBold.copyWith(
